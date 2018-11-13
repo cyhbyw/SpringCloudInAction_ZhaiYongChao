@@ -10,6 +10,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>ribbon-consumer-hystrix</module>
+        <module>hystrix-detail-usage</module>
     </modules>
 
     <parent>
@@ -33,6 +34,11 @@
                 <version>Brixton.SR5</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>1.16.22</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
