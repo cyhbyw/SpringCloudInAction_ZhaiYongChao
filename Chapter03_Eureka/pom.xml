@@ -11,6 +11,7 @@
     <modules>
         <module>eureka-server</module>
         <module>hello-service</module>
+        <module>eureka-server-ha</module>
     </modules>
 
     <parent>
