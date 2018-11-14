@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cyh.domain.User;
 import com.cyh.service.HelloService;
 import com.cyh.service.RefactorHelloService;
+import com.cyh.service.RibbonConfigHelloService;
 
 /**
  * @author: CYH
@@ -20,6 +21,8 @@ public class HelloConsumerController {
     private HelloService helloService;
     @Autowired
     private RefactorHelloService refactorHelloService;
+    @Autowired
+    private RibbonConfigHelloService ribbonConfigHelloService;
 
     @RequestMapping(value = "/feign-consumer", method = RequestMethod.GET)
     public String helloConsumer() {
@@ -33,5 +36,13 @@ public class HelloConsumerController {
         builder.append(refactorHelloService.hello("CYH", 28)).append("\n");
         builder.append(refactorHelloService.hello(new User("CYH", 28))).append("\n");
         return builder.toString();
+    }
+
+    @RequestMapping(value = "/config", method = RequestMethod.GET)
+    public String ribbonConfigTest() {
+        long start = System.currentTimeMillis();
+        String s = ribbonConfigHelloService.hello();
+        System.err.println("Cost time " + (System.currentTimeMillis() - start));
+        return s;
     }
 }
