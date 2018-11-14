@@ -10,6 +10,8 @@
     <packaging>pom</packaging>
     <modules>
         <module>feign-consumer</module>
+        <module>enhanced-hello-service</module>
+        <module>hello-service-api</module>
     </modules>
 
     <parent>
