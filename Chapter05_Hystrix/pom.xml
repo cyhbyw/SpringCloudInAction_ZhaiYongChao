@@ -11,6 +11,7 @@
     <modules>
         <module>ribbon-consumer-hystrix</module>
         <module>hystrix-detail-usage</module>
+        <module>hystrix-dashboard</module>
     </modules>
 
     <parent>
