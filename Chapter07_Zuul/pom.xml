@@ -10,6 +10,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>api-gateway</module>
+        <module>api-gateway-exception</module>
     </modules>
 
     <parent>
