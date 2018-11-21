@@ -9,6 +9,8 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>rabbitmq-hello</module>
+        <module>config-server-eureka-rabbit</module>
+        <module>config-client-eureka-rabbit</module>
     </modules>
     <packaging>pom</packaging>
 
