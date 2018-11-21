@@ -2,6 +2,8 @@ package com.cyh;
 
 import java.util.Date;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -26,8 +28,10 @@ public class Trace2Application {
     }
 
     @RequestMapping(value = "/trace-2", method = RequestMethod.GET)
-    public String trace() {
-        log.info("call trace-2");
+    public String trace(HttpServletRequest request) {
+        // 常量值来源: org.springframework.cloud.sleuth.Span
+        log.info("call trace-2. TraceId={}, SpanId={}", request.getHeader("X-B3-TraceId"),
+                request.getHeader("X-B3-SpanId"));
         return "trace-2: " + new Date();
     }
 
