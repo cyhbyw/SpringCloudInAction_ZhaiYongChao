@@ -1,5 +1,7 @@
 package com.cyh;
 
+import java.util.concurrent.TimeUnit;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -33,8 +35,9 @@ public class TraceStream1Application {
     }
 
     @RequestMapping(value = "/trace-stream-1", method = RequestMethod.GET)
-    public String trace() {
+    public String trace() throws InterruptedException {
         log.info("call trace-stream-1");
+        TimeUnit.MILLISECONDS.sleep(200);
         return restTemplate().getForEntity("http://trace-stream-2/trace-stream-2", String.class).getBody();
     }
 

@@ -1,6 +1,7 @@
 package com.cyh;
 
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -28,10 +29,11 @@ public class TraceStream2Application {
     }
 
     @RequestMapping(value = "/trace-stream-2", method = RequestMethod.GET)
-    public String trace(HttpServletRequest request) {
+    public String trace(HttpServletRequest request) throws InterruptedException {
         // 常量值来源: org.springframework.cloud.sleuth.Span
         log.info("call trace-stream-2. TraceId={}, SpanId={}", request.getHeader("X-B3-TraceId"),
                 request.getHeader("X-B3-SpanId"));
+        TimeUnit.MILLISECONDS.sleep(100);
         return "trace-stream-2: " + new Date();
     }
 
