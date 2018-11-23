@@ -14,6 +14,7 @@
         <module>trace-stream-1</module>
         <module>trace-stream-2</module>
         <module>zipkin-server-stream</module>
+        <module>zipkin-server-stream-mysql</module>
     </modules>
     <packaging>pom</packaging>
 
