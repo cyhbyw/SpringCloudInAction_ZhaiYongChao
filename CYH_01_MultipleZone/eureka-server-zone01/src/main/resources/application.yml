@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: eureka-server-zone01
+server:
+  port: 30000
+eureka:
+  instance:
+    prefer-ip-address: true
+    hostname: localhost
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    prefer-same-zone-eureka: true
+    region: chengdu
+    availability-zones:
+      chengdu: zone01,zone02
+    service-url:
+      zone01: http://localhost:30000/eureka/
+      zone02: http://localhost:30001/eureka/
