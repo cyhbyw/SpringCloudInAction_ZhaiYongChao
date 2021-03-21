@@ -1,5 +1,8 @@
 package com.cyh.web;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
@@ -19,10 +22,14 @@ public class HelloController {
 
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
     public String index() {
-        ServiceInstance instance = client.getLocalServiceInstance();
-        String x = String.format("Host: %s, ServiceId: %s\n", instance.getHost(), instance.getServiceId());
-        System.err.println(x);
-        return "Hello World";
+        final List<String> services = client.getServices();
+        for (String service : services) {
+            List<ServiceInstance> instances = client.getInstances(service);
+            for (ServiceInstance instance : instances) {
+                System.out.println(String.format("host=%s, id=%s", instance.getHost(), instance.getInstanceId()));
+            }
+        }
+        return "Hello World. Now time is: " + LocalDateTime.now();
     }
 
 }
